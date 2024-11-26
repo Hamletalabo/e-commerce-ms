@@ -3,9 +3,9 @@ spring:
     mongodb:
       username: root
       password: example
-      host: mongo
+      host: localhost
+      port: 27017
       database: customer
       authentication-database: admin
-      port: 27017
 server:
   port: 8090

@@ -14,8 +14,8 @@ import java.math.BigDecimal;
 import java.util.List;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class OrderRequest {
     private Integer id;
@@ -24,7 +24,7 @@ public class OrderRequest {
     @Positive(message = "Order amount should be positive")
     private BigDecimal amount;
 
-    @NotNull(message = "Payment method should not be precised")
+    @NotNull(message = "Payment method should be precised")
     private PaymentMethod paymentMethod;
 
     @NotNull(message = "Customer should be present")
@@ -32,5 +32,6 @@ public class OrderRequest {
     @NotBlank(message = "Customer should be present")
     private String customerId;
 
-    List<PurchaseRequest> products; //will the info of the list of products we want to purchase
+    @NotBlank(message = "You should at least purchase one product")
+    private List<PurchaseRequest> products;
 }

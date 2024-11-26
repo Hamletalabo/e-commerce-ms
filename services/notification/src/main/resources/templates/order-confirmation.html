@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Verification</title>
+    <style>
+        /* Reset CSS */
+        body, h1, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: inter, serif;
+            line-height: 1.6;
+        }
+
+        /* Email wrapper */
+        .email-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            box-shadow: 1px 1px 2px #6A0DAD;
+        }
+
+        /* Header */
+        .header {
+            background-color: #6A0DAD;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 20px 0;
+            border-radius: 8px;
+        }
+
+        /* Content */
+        .content {
+            padding: 20px;
+            background-color: #FFFFFF;
+            border-radius: 8px;
+        }
+
+        /* Table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        th {
+            background-color: #6A0DAD;
+            color: #FFFFFF;
+            font-weight: bold;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        /* Button */
+        .btn {
+            display: inline-block;
+            background-color: #FFFFFF;
+            color: black;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            box-shadow: 1px 1px 1px 2px #6A0DAD;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: left;
+            margin-top: 20px;
+            padding-left: 20px;
+            font-size: 12px;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 600px) {
+            .email-wrapper {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="email-wrapper">
+    <!-- Header -->
+    <div class="header">
+        <h1>Order Details</h1>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <p>Customer: <th:block th:text="${customerName}"></th:block></p>
+        <p>Order ID: <th:block th:text="${orderReference}"></th:block></p>
+
+        <!-- Table -->
+        <table>
+            <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="product : ${products}">
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.quantity}"></td>
+                <td th:text="${product.price}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>Total Amount: $<span th:text="${totalAmount}"></span></p>
+            <p>This is an automated message. Please do not reply to this email.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

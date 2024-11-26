@@ -4,10 +4,10 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
 @Entity
 public class OrderLine {
 
@@ -19,9 +19,7 @@ public class OrderLine {
     @JoinColumn(name = "order_id")
     private Order order;
 
-    private Integer productId; // the relationship btw the order and the product.
+    private Integer productId;
 
     private double quantity;
-
-    // we can add extra fields like the last sold price etc
 }

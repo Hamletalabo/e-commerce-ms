@@ -8,12 +8,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@AllArgsConstructor
 @NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class PurchaseRequest {
 
-    @NotNull(message = "Product is mandatory")
+    @NotNull(message = "Quantity is mandatory")
     private Integer productId;
 
     @Positive(message = "Quantity is mandatory")

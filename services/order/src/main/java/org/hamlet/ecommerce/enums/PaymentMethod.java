@@ -1,6 +1,7 @@
 package org.hamlet.ecommerce.enums;
 
 public enum PaymentMethod {
+
     PAYPAL,
     CREDIT_CARD,
     VISA,

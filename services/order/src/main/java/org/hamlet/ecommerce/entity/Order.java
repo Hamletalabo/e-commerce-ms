@@ -10,17 +10,14 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
-
-import static jakarta.persistence.EnumType.STRING;
-
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
 @Builder
-@NoArgsConstructor
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@Table(name = "customer_order")
+@Table(name = "order_tbl")
 public class Order {
 
     @Id
@@ -29,19 +26,19 @@ public class Order {
 
     private String reference;
 
-    private BigDecimal totalAmount;
+    private BigDecimal amount;
 
-    @Enumerated(STRING)
+    @Enumerated(EnumType.STRING)
     private PaymentMethod paymentMethod;
 
-    private String customerId; // since the customer micro-services uses NoSQL database, we can store the ids in string are we are not sure and the order and customers are not in same database.
+    private String customerId;
 
     @OneToMany(mappedBy = "order")
     private List<OrderLine> orderLines;
 
     @CreatedDate
     @Column(updatable = false, nullable = false)
-    private LocalDateTime createAt;
+    private LocalDateTime createdAt;
 
     @LastModifiedDate
     @Column(insertable = false)
